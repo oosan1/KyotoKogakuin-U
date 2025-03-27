@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>京都工學院大学</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: #002f6c;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+        .logo img {
+            height: 50px;
+        }
+        .menu {
+            display: flex;
+            gap: 20px;
+        }
+        .menu a {
+            color: white;
+            text-decoration: none;
+        }
+        .content {
+            text-align: center;
+            padding: 50px;
+        }
+        .section {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+        }
+        .round-image {
+            border-radius: 10px;  /* 丸くするためのスタイル */
+            object-fit: cover;  /* 画像が歪まないようにする */
+            margin: 10px;  /* 画像の間隔を設定 */
+            width: 80vh;
+        }
+        .feature-images {
+            display: flex;
+            justify-content: center;
+            gap: 20px;  /* 画像間のスペース */
+            margin-top: 20px;  /* 上部にスペースを追加 */
+        }
+        #pictures {
+            position: relative;
+            width: 100%;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .slide img {
+            width: 100%;
+            border-radius: 5px;
+            object-fit: cover;
+        }
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .buttons button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .arrow {
+            font-size: 20px;
+            padding: 10px 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <link rel="icon" href="/pictures/favicon.ico" sizes="32x32">
+        <div class="logo">
+            <img src="/pictures/logo.jpg" alt="京都工学院大学ロゴ">
+        </div>
+        <nav class="menu">
+            <a href="#overview">概要</a>
+            <a href="#departments">学部学科の案内</a>
+            <a href="#features">特色</a>
+            <a href="#achievements">実績</a>
+            <a href="#videos">紹介動画</a>
+        </nav>
+    </header>
+    <div id="pictures">
+        <div class="slides">
+            <div class="slide"><img src="/pictures/slide_image1.jpg" alt="写真1"><div class="overlay"><h2>科学と技術で社会を豊かにする</h2></div></div>
+            <div class="slide"><img src="/pictures/slide_image2.jpg" alt="写真2"><div class="overlay"><h2>未来を生きるホモファーベルの育成</h2></div></div>
+            <div class="slide"><img src="/pictures/image3.png" alt="写真3"><div class="overlay"><h2>タイトル1</h2></div></div>
+        </div>
+    </div>
+    <div class="buttons">
+        <button class="arrow" onclick="prevSlide()">◀</button>
+        <button onclick="goToSlide(0)">1</button>
+        <button onclick="goToSlide(1)">2</button>
+        <button onclick="goToSlide(2)">3</button>
+        <button class="arrow" onclick="nextSlide()">▶</button>
+    </div>
+    <div class="content">
+        <div id="overview" class="section">
+            <h2>概要</h2>
+            <p>京都工学院大学は技術革新をリードする大学です。</p>
+        </div>
+        <div id="departments" class="section">
+            <h2>学部学科の案内</h2>
+            <p>最新の技術と教育プログラムを提供します。</p>
+        </div>
+        <div id="features" class="section">
+            <h2>特色</h2>
+            <p>科学と技術の2系統について追及しています。</p>
+            <div class="feature-images">
+                <img src="/pictures/feature1.png" alt="学科1" class="round-image">
+            </div>
+        </div>
+        <div id="achievements" class="section">
+            <h2>実績</h2>
+            <h3>取得資格</h3>
+            <p>危険物取扱者乙種第1,2,3,4,5,6類</p>
+            <p>化学分析技能士3級</p>
+            <p></p>
+            <br>
+            <h3>参加学会発表</h3>
+            <p>ジュニア日本農芸化学会2024</p>
+            <p>日本金属学会2024年春期講演大会　高校生・高専学生ポスター発表</p>
+            <p>第18回分子科学討論会　高校生ポスター発表</p>
+            <p>2024年度 第3回関西電機科学研究会　高校生チャレンジ</p>
+            <p>第66回 日本植物生理学会年会　高校生生物研究発表会</p>
+            <br>
+            <h3>参加大会</h3>
+            <p>第48回全国高等学校総合文化祭 自然科学部門</p>
+            <p>第41回京都府高等学校総合文化祭総合文化祭 自然科学部門<br>物理:<strong>部門優勝</strong>、化学:<strong>審査員特別賞</strong></p>
+            <p>第49回全国高等学校総合文化祭 自然科学部門 (予定)</p>
+        </div>
+        <div id="videos" class="section">
+            <h2>紹介動画</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/p_eIBpVdZAQ?si=9bQCe-mZ72N6auKm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+    <script>
+        let currentIndex = 0;
+        const totalSlides = document.querySelectorAll('.slide').length;
+
+        function goToSlide(index) {
+            if (index < 0) {
+                currentIndex = totalSlides - 1;
+            } else if (index >= totalSlides) {
+                currentIndex = 0;
+            } else {
+                currentIndex = index;
+            }
+            document.querySelector('.slides').style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        function nextSlide() {
+            goToSlide(currentIndex + 1);
+        }
+
+        function prevSlide() {
+            goToSlide(currentIndex - 1);
+        }
+    </script>
+</body>
+</html>
