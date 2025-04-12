@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="maintenance-overlay">
+        <div class="maintenance-message">
+            <h1>公開準備中...</h1>
+            <p>部活動紹介開始までお待ちください</p>
+        </div>
+    </div>
     <header>
         <link rel="icon" href="pictures/favicon.ico" sizes="32x32">
         <div class="logo">
@@ -24,25 +30,25 @@
         <div class="slides">
             <div class="slide"><img src="pictures/slide_image1.jpg" alt="写真1"><div class="overlay"><h2>科学と技術で社会を豊かにする</h2></div></div>
             <div class="slide"><img src="pictures/slide_image2.jpg" alt="写真2"><div class="overlay"><h2>未来を生きるホモファーベルの育成</h2></div></div>
-            <div class="slide"><img src="pictures/image3.png" alt="写真3"><div class="overlay"><h2>タイトル1</h2></div></div>
         </div>
     </div>
     <div class="buttons">
         <button class="arrow" onclick="prevSlide()">◀</button>
         <button onclick="goToSlide(0)">1</button>
         <button onclick="goToSlide(1)">2</button>
-        <button onclick="goToSlide(2)">3</button>
         <button class="arrow" onclick="nextSlide()">▶</button>
     </div>
     <div class="content">
-        <div id="overview" class="section">
+        <details id="overview" class="section">
+            <summary>この内容は完全にフィクションです。</summary>
             <h2>概要</h2>
             <h3>学校方針</h3>
-            <p>京都工學院大学は様々なことに積極的に挑戦し、日本の将来を担うフロンティア精神を持った人材を育成する4年生大学です。</p>
+            <p>京都工學院大学は様々なことに積極的に挑戦し、日本の将来を担うフロンティア精神を持った人材を育成する4年制大学です。</p>
             <h3>歴史</h3>
             <p>2025年 4月9日：沖ノ鳥島・東京・京都に新キャンパス設置</p>
-        </div>
-        <div id="departments" class="section">
+        </details>
+        <details id="departments" class="section">
+            <summary>この内容は完全にフィクションです</summary>
             <h2>学部学科の案内</h2>
             <div class="container">
                 <div class="card blue">
@@ -115,16 +121,16 @@
                     <h1>新学部設立予定...</h1>
                 </div>
             </div>
-        </div>
+        </details>
         <div id="features" class="section">
-            <h2>特色</h2>
+            <h2>特色(本当)</h2>
             <p>科学と技術の2系統について追及しています。</p>
             <div class="feature-images">
                 <img src="pictures/feature1.png" alt="学科1" class="round-image">
             </div>
         </div>
         <div id="achievements" class="section">
-            <h2>実績</h2>
+            <h2>実績(本当)</h2>
             <h3>取得資格</h3>
             <p>危険物取扱者乙種第1,2,3,4,5,6類</p>
             <p>化学分析技能士3級</p>
@@ -141,15 +147,31 @@
             <p>第48回全国高等学校総合文化祭 自然科学部門</p>
             <p>第41回京都府高等学校総合文化祭総合文化祭 自然科学部門<br>物理:<strong>部門優勝</strong>、化学:<strong>審査員特別賞</strong></p>
             <p>第49回全国高等学校総合文化祭 自然科学部門 (予定)</p>
+            <p>令和6年度高校生ものづくりコンテスト京都府大会 電気工事部門 <strong>優勝</strong></p>
+            <p>令和6年度高校生ものづくりコンテスト京都府大会 電子回路組立部門 <strong>優勝</strong></p>
+            <p>第41回高校生ものづくりコンテスト近畿大会 電気工事部門・電子回路組立部門 <strong>4位</strong></p>
         </div>
         <div id="videos" class="section">
             <h2>紹介動画</h2>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/p_eIBpVdZAQ?si=9bQCe-mZ72N6auKm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe class="rounded-video" width="560" height="315" src="https://www.youtube.com/embed/LT0iLY50bwg?si=Lw-zfGonc4sUwHcj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
     </div>
     <script>
         let currentIndex = 0;
         const totalSlides = document.querySelectorAll('.slide').length;
+        // メンテナンスモード設定
+        const isUnderMaintenance = true;
+
+        // メンテナンス終了予定日時（例：2025年4月12日 15:00）
+        const endTime = new Date('2025-04-12T23:00:00+09:00');
+
+        const now = new Date();
+
+        if (isUnderMaintenance && now < endTime) {
+            document.body.classList.add('maintenance-active');
+        } else {
+            document.getElementById('maintenance-overlay').style.display = 'none';
+        }
 
         function goToSlide(index) {
             if (index < 0) {
